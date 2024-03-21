@@ -32,7 +32,7 @@ This repository contains a Python-based solution for converting SKU (Stock Keepi
 
 ## Usage
 
-1. Place your SKU pricelist PDFs in the `pdfs/boundaried` or `pdfs/unboundaried` directories, depending on whether your PDFs have boundary lines around their tables.
+1. SKU pricelist PDFs are present in the `pdfs/boundaried` or `pdfs/unboundaried` directories, depending on whether PDFs have boundary lines around their tables.
 
 2. Run the pipeline script:
    ```sh

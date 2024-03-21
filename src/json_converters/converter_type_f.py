@@ -1,5 +1,6 @@
 import pandas as pd
 import json
+import os
 
 def is_valid_sku_row(row):
     """Check if the row could potentially contain SKU data."""
@@ -37,7 +38,6 @@ def parse_longer_table(row):
     except ValueError:
         return None
 
-
 csv_file_path = 'csvs/cleaned/sku_list_6_cleaned.csv'
 
 # Read the CSV file, assuming variable number of fields per row
@@ -64,8 +64,11 @@ for row in df_flexible.itertuples(index=False):
 # Removing empty or incomplete SKUs
 skus = [sku for sku in skus if sku and "ID" in sku]
 
-output_json_path = 'exported-jsons/sku_list_6.json'
-with open(output_json_path, 'w') as f:
+output_dir = 'exported-jsons'
+os.makedirs(output_dir, exist_ok=True)
+
+output_json_path = os.path.join(output_dir, 'sku_list_6.json')
+with open(output_json_path, 'w', encoding='utf-8') as f:
     json.dump(skus, f, indent=4)
 
 print(f"Saved \"sku_list_6.json\"")

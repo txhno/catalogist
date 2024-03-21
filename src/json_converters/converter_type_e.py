@@ -1,5 +1,6 @@
 import pandas as pd
 import json
+import os
 
 # Function to clean and standardize header names
 def clean_header(header):
@@ -55,11 +56,14 @@ def parse_data_to_json_updated(data):
     return products
 
 def main():
-    file_path = 'csvs/cleaned/sku_list_5_cleaned.csv'  # Updated path
-    data = pd.read_csv(file_path, header=None)
+    file_path = 'csvs/cleaned/sku_list_5_cleaned.csv'
+    data = pd.read_csv(file_path, header=None, dtype=str)
     products_json_updated = parse_data_to_json_updated(data)
 
-    output_file_path_updated = 'exported-jsons/sku_list_5.json'  # Updated output path
+    output_dir = 'exported-jsons'
+    os.makedirs(output_dir, exist_ok=True)
+
+    output_file_path_updated = os.path.join(output_dir, 'sku_list_5.json')
     with open(output_file_path_updated, 'w', encoding='utf-8') as f:
         json.dump(products_json_updated, f, indent=4)
 

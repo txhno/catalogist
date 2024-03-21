@@ -1,5 +1,6 @@
 import pandas as pd
 import json
+import os
 
 # Function to check if a value can be converted to an integer
 def is_int(val):
@@ -52,8 +53,12 @@ def parse_four_column_table_corrected(data):
     return skus
 
 skus_extracted = parse_four_column_table_corrected(data_list)
-output_file_path = 'exported-jsons/sku_list_4.json'
+
+output_dir = 'exported-jsons'
+os.makedirs(output_dir, exist_ok=True)
+
+output_file_path = os.path.join(output_dir, 'sku_list_4.json')
 with open(output_file_path, 'w', encoding='utf-8') as f:
     json.dump(skus_extracted, f, indent=4)
 
-print(f"Extracted {len(skus_extracted)} SKUs. Output JSON saved to {output_file_path}")
+print(f"Saved \"sku_list_4.json\"")

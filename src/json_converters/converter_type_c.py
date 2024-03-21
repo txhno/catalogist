@@ -1,6 +1,7 @@
 import pandas as pd
 import json
 import re
+import os 
 
 # Define helper functions for parsing
 def parse_dimensions(dimensions_str):
@@ -63,8 +64,12 @@ for index, row in df.iterrows():
     else:
         current_title = line
 
-output_dir = 'exported-jsons/sku_list_3.json'
-with open(output_dir, 'w', encoding='utf-8') as json_file:
+output_dir = 'exported-jsons'
+output_file = 'sku_list_3.json'
+os.makedirs(output_dir, exist_ok=True)
+
+full_output_path = os.path.join(output_dir, output_file)
+with open(full_output_path, 'w', encoding='utf-8') as json_file:
     json.dump(skus, json_file, indent=4)
 
 print(f"Saved \"sku_list_3.json\"")

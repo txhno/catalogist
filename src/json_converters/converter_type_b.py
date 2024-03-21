@@ -1,5 +1,6 @@
 import pandas as pd
 import json
+import os
 
 # Function to safely convert price strings to float values
 def safe_convert_price(price_str):
@@ -10,7 +11,11 @@ def safe_convert_price(price_str):
 
 # Correcting the input and output file paths relative to the script location
 file_path = 'csvs/cleaned/sku_list_2_cleaned.csv'
-corrected_output_file_path = 'exported-jsons/sku_list_2.json'
+output_dir = 'exported-jsons'
+output_file = 'sku_list_2.json'
+
+os.makedirs(output_dir, exist_ok=True)
+corrected_output_file_path = os.path.join(output_dir, output_file)
 
 # Re-reading the CSV to start fresh
 data = pd.read_csv(file_path, dtype=str, header=None)

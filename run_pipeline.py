@@ -10,14 +10,9 @@ def run_script(script_path):
         print(f"Failed to execute {script_path}: {e}")
 
 def main():
-    # Step 1: Extract PDFs to CSVs
-    run_script('src/pdf_extractor.py')
-
-    # Step 2: Clean extracted CSVs
-    run_script('src/csv_cleaner.py')
-
-    # Step 3: Convert cleaned CSVs to JSONs using converter scripts
-    converter_scripts = [
+    run_script('src/pdf_extractor.py')  # Step 1: Extract PDFs to CSVs
+    run_script('src/csv_cleaner.py')    # Step 2: Clean extracted CSVs
+    converter_scripts = [               # Step 3: Convert cleaned CSVs to JSONs using converter scripts
         'converter_type_a.py',
         'converter_type_b.py',
         'converter_type_c.py',
@@ -30,7 +25,6 @@ def main():
         script_path = os.path.join('src/json_converters', script_name)
         run_script(script_path)
 
-    # Final message
     print("All PDFs have been successfully exported to JSONs at /exported-jsons/.")
 
 if __name__ == "__main__":

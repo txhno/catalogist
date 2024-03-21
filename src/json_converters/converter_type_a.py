@@ -1,5 +1,6 @@
 import pandas as pd
 import json
+import os
 
 file_path = 'csvs/cleaned/sku_list_1_cleaned.csv'
 df = pd.read_csv(file_path)
@@ -27,10 +28,13 @@ def parse_sku_data(df):
     return products
 
 # Parse the SKU data starting from the header row for SKU details
-structured_sku_data = parse_sku_data(df[25:]) 
-output_dir = 'exported-jsons/sku_list_1.json'
+structured_sku_data = parse_sku_data(df[25:])
+output_dir = 'exported-jsons'
+output_file = 'sku_list_1.json'
+os.makedirs(output_dir, exist_ok=True)
+full_path = os.path.join(output_dir, output_file)
 
-with open(output_dir, 'w', encoding='utf-8') as f:
+with open(full_path, 'w', encoding='utf-8') as f:
     json.dump(structured_sku_data, f, indent=4)
 
 print(f"Saved \"sku_list_1.json\"")

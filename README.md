@@ -41,6 +41,13 @@ This repository contains a Python-based solution for converting SKU (Stock Keepi
 
 This script will process all PDFs, extract and clean CSV data, and then convert them into JSON files. The JSON files will be saved in the `exported-jsons` directory.
 
+### Dynamic PDF Parser
+
+For dynamic PDF to JSON parsing and conversion, open and run the `dynamic_pdf_to_json.ipynb` Jupyter notebook after installing requirements. 
+
+This notebook provides a step-by-step guide for converting specific PDF pages to structured JSON data using the Gemini Pro Vision model. It specializes in converting SKU pricelist PDFs, including those based on images, into structured JSONs. The model settings can be configured within the notebook, allowing for precise data extraction tailored to your needs. Additionally, the range of PDF pages to be converted can also be specified and adjusted as required.
+Ensure all prerequisites are installed, and follow the notebook's instructions for tailored SKU data processing.
+
 ## Project Structure
 
 - `pdfs/boundaried` and `pdfs/unboundaried`: Directories to place your PDF files for processing.

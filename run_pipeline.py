@@ -4,7 +4,7 @@ import os
 def run_script(script_path):
     """Executes a given Python script using subprocess."""
     try:
-        subprocess.check_call(['python3', script_path])
+        subprocess.run(['python3', script_path], check=True)
         print(f"Successfully executed {script_path}")
     except subprocess.CalledProcessError as e:
         print(f"Failed to execute {script_path}: {e}")

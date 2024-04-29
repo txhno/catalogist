@@ -1,6 +1,6 @@
-# SKU List Parser
+# Catalogist
 
-Transform SKU Price Lists from PDF to JSON: Automated extraction, cleaning, and conversion pipeline for SKU data.
+Transform Product/SKU Price Lists from PDF to JSON: Automated extraction, cleaning, and conversion pipeline for SKU data.
 
 ## Overview
 
